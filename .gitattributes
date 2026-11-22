@@ -1,0 +1,2 @@
+# Keep the image generator out of the GitHub language bar
+.github/assets/render.py linguist-documentation

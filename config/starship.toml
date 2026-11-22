@@ -1,0 +1,140 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# hush · Starship prompt
+# https://github.com/MeetJariwala10/hush
+#
+#   ▌ folder · branch · git status · runtime ──────────── Sun 22 Nov 14:30
+#   ▌ ❯
+#
+# Colors are defined once in [palettes.hush]. Icons require a Nerd Font.
+
+add_newline = true
+palette = 'hush'
+
+format = """
+[▌ ](blue)\
+$directory\
+$git_branch\
+$git_status\
+$git_state\
+$nodejs\
+$python\
+$golang\
+$rust\
+$java\
+$ruby\
+$php\
+$lua\
+$docker_context\
+[ ](dim)$fill\
+$cmd_duration\
+$time\
+$line_break\
+[▌ ](green)$character\
+"""
+
+[palettes.hush]
+accent = '#61afef'  # current folder
+muted  = '#6b7280'  # git branch
+dim    = '#565d68'  # fill line and clock
+sep    = '#454b54'  # · separators
+blue   = '#5b9bd5'
+green  = '#8fbf72'
+yellow = '#cbb486'  # warnings and errors (hush uses no red)
+teal   = '#56b6c2'
+purple = '#c678dd'
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+style = 'bold accent'
+truncate_to_repo = true
+truncation_length = 1
+truncation_symbol = ''
+read_only = ' '
+read_only_style = 'yellow'
+
+[git_branch]
+symbol = ' '
+format = '[ · ](sep)[$symbol$branch]($style)'
+style = 'muted'
+
+[git_status]
+format = '([ ·](sep)$all_status$ahead_behind)'
+conflicted = '[   ${count}](yellow)'
+ahead      = '[  ⇡ ${count}](green)'
+behind     = '[  ⇣ ${count}](yellow)'
+diverged   = '[  ⇡ ${ahead_count}⇣ ${behind_count}](yellow)'
+untracked  = '[   ${count}](blue)'
+stashed    = '[   ${count}](purple)'
+modified   = '[   ${count}](yellow)'
+staged     = '[   ${count}](green)'
+renamed    = '[   ${count}](blue)'
+deleted    = '[   ${count}](yellow)'
+
+[git_state]
+format = '[ · ](sep)[$state( $progress_current/$progress_total)](yellow)'
+
+[nodejs]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'green'
+
+[python]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'blue'
+
+[golang]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'teal'
+
+[rust]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'yellow'
+
+[java]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'purple'
+
+[ruby]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'purple'
+
+[php]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'blue'
+
+[lua]
+symbol = ' '
+format = '[ · ](sep)[$symbol$version]($style)'
+style = 'teal'
+
+[docker_context]
+symbol = ' '
+format = '[ · ](sep)[$symbol$context]($style)'
+style = 'blue'
+
+[fill]
+symbol = '─'
+style = 'dim'
+
+[cmd_duration]
+min_time = 2000
+format = '[$duration]($style)  '
+style = 'yellow'
+
+[time]
+disabled = false
+time_format = '%a %d %b %H:%M'
+format = '[ $time]($style)'
+style = 'dim'
+
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[❯](yellow)'
+vimcmd_symbol = '[❮](blue)'
